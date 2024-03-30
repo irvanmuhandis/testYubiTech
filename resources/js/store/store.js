@@ -47,22 +47,22 @@ export const myModule = {
         },
         // Mutation to delete a selectedMethod from a style
         setSelectedMethod(state, { styleIndex, data }) {
-            console.log("=============slctd method=================");
-            console.log(styleIndex);
-            console.log(state.style[styleIndex].selectedMethod);
-            console.log("====================================");
+            // console.log("=============slctd method=================");
+            // console.log(styleIndex);
+            // console.log(state.style[styleIndex].selectedMethod);
+            // console.log("====================================");
             state.style[styleIndex].selectedMethod = data;
         },
         // Mutation to delete a selectedColor from a selectedMethod
         setSelectedColor(state, { styleIndex, methodIndex, data }) {
-            console.log("===========slctd color======================");
-            console.log(styleIndex);
-            console.log(methodIndex);
-            console.log(state.style);
-            console.log(state.style[styleIndex]);
-            console.log(state.style[styleIndex].selectedMethod);
-            console.log(state.style[styleIndex].selectedMethod[methodIndex]);
-            console.log("====================================");
+            // console.log("===========slctd color======================");
+            // console.log(styleIndex);
+            // console.log(methodIndex);
+            // console.log(state.style);
+            // console.log(state.style[styleIndex]);
+            // console.log(state.style[styleIndex].selectedMethod);
+            // console.log(state.style[styleIndex].selectedMethod[methodIndex]);
+            // console.log("====================================");
             state.style[styleIndex].selectedMethod[methodIndex].selectedColor = data;
 
             const subQty =  state.style[styleIndex].selectedMethod[methodIndex].selectedColor.reduce(

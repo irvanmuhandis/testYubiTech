@@ -48,9 +48,6 @@ const selectedAllData = () => {
 }
 
 const setStyle = (data) => {
-    console.log('===style=============================');
-    console.log(data);
-    console.log('====================================');
     store.commit('setStyle', { data });
 }
 watch(selectedStyle.value, debounce(() =>

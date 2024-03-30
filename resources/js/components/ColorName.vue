@@ -51,10 +51,6 @@ const selectedColorAllData = () => {
     }
 }
 const setSelectedColor = (data) => {
-    console.log("===set clr===");
-    console.log(styleIndex);
-    console.log(methodIndex);
-    console.log(data);
     store.commit('setSelectedColor', { styleIndex, methodIndex, data });
 }
 watch(selectedColor, debounce(() =>
