@@ -22,10 +22,9 @@ const fetchMethod = () => {
         .then(response => {
             const apiData = response.data;
             methodList.value = apiData;
-            // Process the API data and update the Vue component's data properties
         })
         .catch(error => {
-            // Handle any errors that occurred during the API request
+            console.log(error);
         });
 }
 
@@ -71,9 +70,7 @@ const selectedMethodsAllData = () => {
     } else {
         selectedMethods.value = [];
     }
-    console.log(selectedMethods.value);
-    // setSelectedMethods(selectedMethods.value);
-}
+ }
 
 
 const switchColor = (item) => {
@@ -138,11 +135,12 @@ onMounted(() => {
 
         <ColorName v-for="(item, index) in selectedMethods" :isOpenColor="item.isOpenColor"
             @close-color="closeColor(item)" :colorList="colorList" :style-index="styleIndex" :method-index="index"
-            :selectedMethod="item" :selectedColor="item.selectedColor" :subQty="item.subQty" />
+            :selectedMethodItem="item" :selected-method="selectedMethods" :subQty="item.subQty" />
 
         <div class="border-top col-md p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-dark">Style {{ styleSales.style_name }}</strong>
             <div class="mb-1 text-muted">QTY : {{ styleSales.total }}</div>
+
             <table class="table">
                 <thead>
                     <tr>
