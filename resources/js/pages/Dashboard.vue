@@ -6,6 +6,7 @@ import {ref} from 'vue';
 const store = useStore();
 const styles = ref(store.getters.getStyle);
 
+
 const postBtn = () => {
     return console.log(styles.value);
 }
@@ -17,6 +18,5 @@ const postBtn = () => {
         <div class="float-end">
             <button class="btn btn-outline-dark" @click="postBtn()">SAVE</button>
         </div>
-
     </div>
 </template>

@@ -9,6 +9,11 @@ class ColorNameMethodController extends Controller
 {
     function index()
     {
-        return ColorNameMethod::all();
+        $data =  ColorNameMethod::all();
+        $data->transform(function ($item) {
+            $item['qty'] = 0;
+            return $item;
+        });
+        return $data;
     }
 }

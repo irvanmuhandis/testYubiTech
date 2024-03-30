@@ -41,12 +41,16 @@ const toggleSelection = (data) => {
 const selectedAllData = () => {
     if (selectAll.value) {
         selectedStyle.value = styleList.value.map(data => data);
+        setStyle(selectedStyle.value);
     } else {
         selectedStyle.value = [];
     }
 }
 
 const setStyle = (data) => {
+    console.log('===style=============================');
+    console.log(data);
+    console.log('====================================');
     store.commit('setStyle', { data });
 }
 watch(selectedStyle.value, debounce(() =>

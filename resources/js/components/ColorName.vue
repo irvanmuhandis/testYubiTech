@@ -44,7 +44,8 @@ const toggleColor = (data) => {
 };
 const selectedColorAllData = () => {
     if (selectAllColor.value) {
-        selectedColor.value = colorList.map(data => data);
+        selectedColor.value = colorList.value.map(data => data);
+        setSelectedColor(selectedColor.value);
     } else {
         selectedColor.value = [];
     }
@@ -58,7 +59,8 @@ const setSelectedColor = (data) => {
 }
 watch(selectedColor, debounce(() =>
     setSelectedColor(selectedColor.value)
-    , 300), { deep: true });
+    , 100), { deep: true });
+
 onMounted(() => {
     fetchColor();
 })

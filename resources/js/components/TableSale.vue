@@ -44,6 +44,7 @@ const toggleMethod = (data) => {
 const selectedMethodsAllData = () => {
     if (selectAllMethod.value) {
         selectedMethods.value = methodList.value.map(item => item);
+        setSelectedMethods(selectedMethods.value);
     } else {
         selectedMethods.value = [];
     }

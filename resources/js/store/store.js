@@ -2,25 +2,25 @@
 export const myModule = {
     state: {
         style: [
-            {
-                id: 0,
-                style_name: "",
-                total: 0,
-                selectedMethod: [
-                    {
-                        id: 0,
-                        name: "",
-                        subQty: 0,
-                        selectedColor: [
-                            {
-                                name: "",
-                                id: 0,
-                                qty: 0,
-                            },
-                        ],
-                    },
-                ],
-            },
+            // {
+            //     id: 0,
+            //     style_name: "",
+            //     total: 0,
+            //     selectedMethod: [
+            //         {
+            //             id: 0,
+            //             name: "",
+            //             subQty: 0,
+            //             selectedColor: [
+            //                 {
+            //                     name: "",
+            //                     id: 0,
+            //                     qty: 0,
+            //                 },
+            //             ],
+            //         },
+            //     ],
+            // },
         ],
     },
     mutations: {
@@ -58,12 +58,12 @@ export const myModule = {
             console.log("===========slctd color======================");
             console.log(styleIndex);
             console.log(methodIndex);
+            console.log(state.style);
             console.log(state.style[styleIndex]);
             console.log(state.style[styleIndex].selectedMethod);
             console.log(state.style[styleIndex].selectedMethod[methodIndex]);
             console.log("====================================");
-            state.style[styleIndex].selectedMethod[methodIndex].selectedColor =
-                data;
+            state.style[styleIndex].selectedMethod[methodIndex].selectedColor = data;
 
             const subQty =  state.style[styleIndex].selectedMethod[methodIndex].selectedColor.reduce(
                 (acc, color) => acc + color.qty,
