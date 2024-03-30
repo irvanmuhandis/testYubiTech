@@ -3,11 +3,8 @@ import { ref, watch, onMounted } from 'vue';
 import { debounce } from 'lodash';
 import { useStore } from 'vuex';
 
-
-// const { emit } = defineEmits(['send-data']);
 var {
     selectedMethodItem,
-    colorList,
     isOpenColor,
     subQty,
     styleIndex,
@@ -15,7 +12,6 @@ var {
     selectedMethod
 } = defineProps([
     'selectedMethodItem',
-    'colorList',
     'isOpenColor',
     'subQty',
     'style-index',
@@ -25,7 +21,19 @@ var {
 const selectAllColor = ref(false);
 const selectedColor = ref([]);
 const store = useStore();
+const colorList = ref([]);
 
+const fetchColor = () => {
+    axios.get('/api/name')
+        .then(response => {
+            const apiData = response.data;
+            colorList.value = apiData;
+        })
+        .catch(error => {
+            console.log("===error===");
+            console.log(error);
+        });
+}
 const toggleColor = (data) => {
     const index = selectedColor.value.indexOf(data);
     if (index === -1) {
@@ -35,10 +43,6 @@ const toggleColor = (data) => {
     }
 };
 const selectedColorAllData = () => {
-    console.log('====================================');
-    console.log(colorList);
-    console.log(selectedColor);
-    console.log('====================================');
     if (selectAllColor.value) {
         selectedColor.value = colorList.map(data => data);
     } else {
@@ -55,7 +59,9 @@ const setSelectedColor = (data) => {
 watch(selectedColor, debounce(() =>
     setSelectedColor(selectedColor.value)
     , 300), { deep: true });
-
+onMounted(() => {
+    fetchColor();
+})
 </script>
 
 <template>
@@ -81,13 +87,14 @@ watch(selectedColor, debounce(() =>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in colorList">
+                <tr v-for="(item) in colorList" :key="item.id">
                     <td><input :checked="selectedColor.includes(item)" @change="toggleColor(item)"
                             class="form-check-input" type="checkbox">
                     </td>
                     <td>{{ item.name }}</td>
                     <td v-if="selectedColor.includes(item)">
-                        <input v-model="selectedColor.find(color => color.id === item.id).qty"  type="number"></td>
+                        <input v-model="item.qty" type="number">
+                    </td>
                     <td v-else>Select First</td>
                 </tr>
             </tbody>

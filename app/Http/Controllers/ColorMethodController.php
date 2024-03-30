@@ -16,8 +16,6 @@ class ColorMethodController extends Controller
             $item['isOpenColor'] = false;
             return $item;
         });
-
-        // Return the modified color methods
         return $colorMethods;
     }
 }

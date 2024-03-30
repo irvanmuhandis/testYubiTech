@@ -38,7 +38,6 @@ class DatabaseSeeder extends Seeder
             $colorMethod = ColorMethod::create($data);
             $colorMethodIds[$data['name']] = $colorMethod->id;
         }
-        // Seed data for color_name_methods table with foreign key references
         $colorNameMethods = [
             ["name" => "Red Classic", "color_method" => $colorMethodIds['Roasted']],
             ["name" => "Blue Marin", "color_method" => $colorMethodIds['Roasted']],
@@ -46,7 +45,6 @@ class DatabaseSeeder extends Seeder
             ["name" => "Grey Water", "color_method" => $colorMethodIds['Printed']]
         ];
 
-        // Create color_name_methods records
 
         foreach ($styles as $data) {
             Style::create($data);

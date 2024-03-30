@@ -19,10 +19,10 @@ const fetchStyle = () => {
         .then(response => {
             const apiData = response.data;
             styleList.value = apiData;
-            // Process the API data and update the Vue component's data properties
         })
         .catch(error => {
-            // Handle any errors that occurred during the API request
+            console.log("===error===");
+            console.log(error);
         });
 }
 const selectAll = ref(false)
@@ -37,7 +37,6 @@ const toggleSelection = (data) => {
             selectAll.value = false;
         }
     }
-    console.log(selectedStyle.value);
 };
 const selectedAllData = () => {
     if (selectAll.value) {
@@ -45,12 +44,9 @@ const selectedAllData = () => {
     } else {
         selectedStyle.value = [];
     }
-    console.log(selectedStyle.value);
 }
 
 const setStyle = (data) => {
-    console.log("===set===");
-    console.log(data);
     store.commit('setStyle', { data });
 }
 watch(selectedStyle.value, debounce(() =>
@@ -84,7 +80,7 @@ onMounted(() => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in styleList">
+                        <tr v-for="item in styleList" :key="item.id">
                             <td>
                                 <input :checked="selectedStyle.includes(item)" @change="toggleSelection(item)"
                                     class="form-check-input" type="checkbox">
@@ -115,5 +111,5 @@ onMounted(() => {
             </div>
         </div>
     </div>
-    <TableSale v-for="(item, index) in selectedStyle" :styleSales="item" :styleIndex="index" />
+    <TableSale :key="item.id" v-for="(item, index) in selectedStyle" :styleSales="item" :styleIndex="index" />
 </template>

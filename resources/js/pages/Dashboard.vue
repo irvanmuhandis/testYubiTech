@@ -7,7 +7,6 @@ const store = useStore();
 const styles = ref(store.getters.getStyle);
 
 const postBtn = () => {
-
     return console.log(styles.value);
 }
 
@@ -15,7 +14,6 @@ const postBtn = () => {
 <template>
     <div class="content p-5">
         <FormSale />
-
         <div class="float-end">
             <button class="btn btn-outline-dark" @click="postBtn()">SAVE</button>
         </div>

@@ -28,24 +28,6 @@ const fetchMethod = () => {
         });
 }
 
-const colorList = ref([]);
-const fetchColor = () => {
-    axios.get('/api/name')
-        .then(response => {
-            const apiData = response.data;
-            apiData.forEach(element => {
-                element['qty'] = 0;
-            });
-            colorList.value = apiData;
-
-            // Process the API data and update the Vue component's data properties
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the API request
-        });
-}
-
-
 const selectAllMethod = ref(false)
 const selectedMethods = ref([])
 const toggleMethod = (data) => {
@@ -58,11 +40,6 @@ const toggleMethod = (data) => {
             selectAllMethod.value = false;
         }
     }
-    console.log('====index=======arr=====data================');
-    console.log(index);
-    console.log(selectedMethods.value);
-    console.log(data);
-    console.log('====================================');
 };
 const selectedMethodsAllData = () => {
     if (selectAllMethod.value) {
@@ -87,9 +64,6 @@ const closeColor = (item) => {
 
 
 const setSelectedMethods = (data) => {
-    console.log("===set mthd===");
-    console.log(styleIndex);
-    console.log(data);
     store.commit('setSelectedMethod', { styleIndex, data });
 }
 watch(selectedMethods.value, debounce(() =>
@@ -98,7 +72,6 @@ watch(selectedMethods.value, debounce(() =>
 
 onMounted(() => {
     fetchMethod();
-    fetchColor();
 })
 </script>
 <template>
@@ -123,7 +96,7 @@ onMounted(() => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in methodList">
+                    <tr v-for="item in methodList" :key="item.id">
                         <td><input @change="toggleMethod(item)" :checked="selectedMethods.includes(item)"
                                 class="form-check-input" type="checkbox">
                         </td>
@@ -133,8 +106,8 @@ onMounted(() => {
             </table>
         </div>
 
-        <ColorName v-for="(item, index) in selectedMethods" :isOpenColor="item.isOpenColor"
-            @close-color="closeColor(item)" :colorList="colorList" :style-index="styleIndex" :method-index="index"
+        <ColorName :key="item.id" v-for="(item, index) in selectedMethods" :isOpenColor="item.isOpenColor"
+            @close-color="closeColor(item)" :style-index="styleIndex" :method-index="index"
             :selectedMethodItem="item" :selected-method="selectedMethods" :subQty="item.subQty" />
 
         <div class="border-top col-md p-4 d-flex flex-column position-static">
@@ -151,7 +124,7 @@ onMounted(() => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item, index in selectedMethods">
+                    <tr v-for="item, index in selectedMethods" :key="item.id">
                         <th>{{ index + 1 }}</th>
                         <td>{{ item.name }}</td>
                         <td><button @click="switchColor(item)" class="btn btn-outline-dark">+{{

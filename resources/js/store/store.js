@@ -47,7 +47,7 @@ export const myModule = {
         },
         // Mutation to delete a selectedMethod from a style
         setSelectedMethod(state, { styleIndex, data }) {
-            console.log("====================================");
+            console.log("=============slctd method=================");
             console.log(styleIndex);
             console.log(state.style[styleIndex].selectedMethod);
             console.log("====================================");
@@ -55,9 +55,11 @@ export const myModule = {
         },
         // Mutation to delete a selectedColor from a selectedMethod
         setSelectedColor(state, { styleIndex, methodIndex, data }) {
-            console.log("===========slctd clr======================");
+            console.log("===========slctd color======================");
             console.log(styleIndex);
             console.log(methodIndex);
+            console.log(state.style[styleIndex]);
+            console.log(state.style[styleIndex].selectedMethod);
             console.log(state.style[styleIndex].selectedMethod[methodIndex]);
             console.log("====================================");
             state.style[styleIndex].selectedMethod[methodIndex].selectedColor =
@@ -84,32 +86,6 @@ export const myModule = {
         // Getter to compute subQty for a specific selectedMethod within a style
         getQty: (state) => (styleIndex, methodIndex,colorIndex) => {
             return state.style[styleIndex].selectedMethod[methodIndex].selectedColor[colorIndex].qty;
-        },
-        // Getter to check if a style exists in the state
-        isStyleExists: (state) => (styleIndex) => {
-            return styleIndex >= 0 && styleIndex < state.style.length;
-        },
-        // Getter to check if a selectedMethod exists in a style
-        isMethodExists: (state) => (styleIndex, methodIndex) => {
-            return (
-                styleIndex >= 0 &&
-                styleIndex < state.style.length &&
-                methodIndex >= 0 &&
-                methodIndex < state.style[styleIndex].selectedMethod.length
-            );
-        },
-        // Getter to check if a selectedColor exists in a selectedMethod
-        isColorExists: (state) => (styleIndex, methodIndex, colorIndex) => {
-            return (
-                styleIndex >= 0 &&
-                styleIndex < state.style.length &&
-                methodIndex >= 0 &&
-                methodIndex < state.style[styleIndex].selectedMethod.length &&
-                colorIndex >= 0 &&
-                colorIndex <
-                    state.style[styleIndex].selectedMethod[methodIndex]
-                        .selectedColor.length
-            );
         },
     },
     // Other Vuex module options (actions, etc.) can be defined here
