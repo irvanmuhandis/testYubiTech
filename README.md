@@ -18,42 +18,41 @@
 
 This is assignment for test placement in PT.Yubi Technology.
 
-## Diketahui: 
-Perusahaan ABCD ingin membuat aplikasi yang memiliki kemampuan untuk mencatat orderan pesanan dari client dengan spesifikasi sebagai berikut.
+## Known: 
+ABCD company wants to create an application that has the ability to record orders from clients with the following specifications.
 
 ![WhatsApp Image 2023-12-22 at 15 36 50](https://github.com/YubiRepo/Backend-Test-Dev/assets/62506582/d2b1b30d-04b0-41e4-831f-6d81e618afda)
 
+1. Data Style: information about the product (just fill in the data in the database, no need to create the UI).
 
-1. Data Style: informasi perihal product (cukup isi data saja di database, tidak perlu di buat UI nya).
-
-      | Name           | Desc                      |
+    | Name | Desc |
       |----------------|---------------------------|
-      | Hair Punk | Week Style Kekinian            |
-      | Yellow Rainbow | Week Style Kidz Zaman Now |
-      | Relic Style | Week Style Classic           |
+      | Hair Punk | Contemporary Week Style |
+      | Yellow Rainbow | Week Style Kidz Age Now |
+      | Relic Style | Week Style Classic |
 
-3. Color Method: informasi metode warna (cukup isi data saja di database, tidak perlu di buat UI nya).
+3. Color Method: color method information (just fill in the data in the database, no need to create the UI).
 
-    | Name      | Desc                              |
+    | Name | Desc |
     |-----------|-----------------------------------|
-    | Roasted   | Pengolahan warna dengan dibakar   |
-    | Boiled    | Pengolahan warna dengan di rebus  |
-    | Printed   | Pengolahan warna dengan di print  |
+    | Roasted | Color processing by burning |
+    | Boiled | Color processing by boiling |
+    | Printed | Color processing by printing |
    
-
-4. Color Name Method: informasi prihal identitas warna color method, 1 color method bisa memiliki banyak color name method (cukup isi data saja di database, tidak perlu di buat UI nya).
+4. Color Name Method: information about color identity color method, 1 color method can have many color name methods (just fill in the data in the database, no need to create the UI).
  
-    | Name  | Color Method    |
+    | Name | Color Method |
     |-------|-----------------|
-    | Red Classic   | Roasted |
-    | Blue Marin    | Roasted |
-    | Dark Morron   | Boiled  |
-    | Grey Water    | Printed |
+    | Red Classic | Roasted |
+    | Blue Marin | Roasted |
+    | Dark Morron | Boiled |
+    | Grey Water | Printed |
 
-5. Sales Order: merupakan informasi pesanan dari client dengan ketentuan sebagai berikut.
-    - 1 Sales Order bisa memiliki banyak style
-    - Di dalam 1 style bisa memiliki banyak color method.
-    - Di dalam 1 color method bisa milih lebih dari satu colorn ame method beserta qty yang dipesan.
+5. Sales Order: is order information from the client with the following conditions.
+    - 1 Sales Order can have many styles
+    - Inside 1 style can have many color methods.
+    - In 1 color method can choose more than one color ame method along with the qty ordered.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -74,9 +73,9 @@ Perusahaan ABCD ingin membuat aplikasi yang memiliki kemampuan untuk mencatat or
 ### Prerequisites
 
 
-* composer
-* npm
-* mySql
+* Composer v2.5.5
+* Npm v9.3.1
+* MySql v8.2.0
 
 ### Installation / Usage
 
@@ -85,32 +84,34 @@ Perusahaan ABCD ingin membuat aplikasi yang memiliki kemampuan untuk mencatat or
    ```sh
    git clone https://github.com/irvanmuhandis/testYubiTech.git
    ```
-3. Open terminal in project directory   
-2. Install NPM packages
+3. Open terminal in project directory
+4. Genereate APP_KEY in env using command
+   ```sh
+   php artisan key:generate
+   ```   
+5. Install NPM packages using command
    ```sh
    npm install
    ```
-3. Start database MySql
-4. Migrate database
+6. Start database MySql service
+7. Migrate database
    ```sh
    php artisan migrate
    ```
-5. Seeding database
+8. Seeding database
    ```sh
    php artisan db:seed
    ```
-6. Start laravel server
-   ```sh
-   php artisan serve
-   ```
-7. Start Vue server
-   ```sh
-   npm run dev
-   ```
-8. Open browser  http://127.0.0.1:8000.
+9.  Start laravel server
+    ```sh
+    php artisan serve
+    ```
+10. Start Vue server
+    ```sh
+    npm run dev
+    ```
+11. Open browser  http://127.0.0.1:8000.
 
 
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

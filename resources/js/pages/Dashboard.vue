@@ -4,11 +4,12 @@ import TableSale from '../components/TableSale.vue';
 import { mapGetters ,useStore } from 'vuex';
 import {ref} from 'vue';
 const store = useStore();
-const styles = ref(store.getters.getStyle);
+const styles = ref();
 
 
 const postBtn = () => {
-    return console.log(styles.value);
+    styles.value = store.getters.getStyle;
+    console.log(styles.value);
 }
 
 </script>

@@ -82,7 +82,8 @@ export const myModule = {
         // Getter to compute total for a specific style
         getStyle: (state) => {
             return state.style;
-        },
+        }
+        ,
         // Getter to compute subQty for a specific selectedMethod within a style
         getQty: (state) => (styleIndex, methodIndex,colorIndex) => {
             return state.style[styleIndex].selectedMethod[methodIndex].selectedColor[colorIndex].qty;

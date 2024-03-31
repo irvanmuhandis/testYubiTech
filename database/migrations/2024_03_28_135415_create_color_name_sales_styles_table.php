@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('colormethod_sales')->references('id')->on('color_method_sales');
             $table->integer('qty');
             $table->unsignedBigInteger('color_name');
-            $table->foreign('color_name')->references('id')->on('color_names');
+            $table->foreign('color_name')->references('id')->on('color_method_names');
         });
     }
 
