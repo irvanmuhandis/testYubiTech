@@ -23,7 +23,7 @@ export const myModule = {
             // },
         ],
         form:{
-            so:null,
+            so:"",
             customer:"",
             date:""
         }

@@ -15,7 +15,7 @@ const closeStyle = () => {
 }
 const styleList = ref([]);
 const form = ref({
-    so_num: null,
+    so_num: "",
     customer: "",
     date: ""
 });
@@ -110,7 +110,7 @@ onMounted(() => {
                 <div class="form-group">
                     <label class="form-label">SO Number</label>
                     <div class="input-group mb-3">
-                        <input v-model="form.so_num" type="number" class="form-control">
+                        <input v-model="form.so_num" type="text" class="form-control">
                     </div>
                     <label class="form-label">Nama Customer</label>
                     <div class="input-group mb-3">
