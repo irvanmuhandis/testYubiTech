@@ -76,6 +76,8 @@ ABCD company wants to create an application that has the ability to record order
 * Composer v2.5.5
 * Npm v9.3.1
 * MySql v8.2.0
+* PHP v8.2
+* Laravel v.11
 
 ### Installation / Usage
 

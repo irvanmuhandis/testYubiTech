@@ -9,4 +9,8 @@ class SalesOrder extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    function sale_style(){
+        return $this->hasMany(SalesStyle::class,'salesorder');
+    }
 }

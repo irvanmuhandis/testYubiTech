@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ColorNameMethod extends Model
 {
     use HasFactory;
+
+    function name_method()
+    {
+        return    $this->belongsTo(ColorMethod::class,'color_method');
+    }
 }

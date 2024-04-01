@@ -14,6 +14,12 @@ const closeStyle = () => {
     isOpenStyle.value = false;
 }
 const styleList = ref([]);
+const form = ref({
+    so_num: null,
+    customer: "",
+    date: ""
+});
+
 const fetchStyle = () => {
     axios.get('/api/style')
         .then(response => {
@@ -50,8 +56,16 @@ const selectedAllData = () => {
 const setStyle = (data) => {
     store.commit('setStyle', { data });
 }
+const setForm = (data) => {
+    store.commit('setForm', { data });
+}
+
 watch(selectedStyle.value, debounce(() =>
     setStyle(selectedStyle.value)
+    , 300), { deep: true });
+
+watch(form.value, debounce(() =>
+    setForm(form.value)
     , 300), { deep: true });
 
 onMounted(() => {
@@ -96,15 +110,15 @@ onMounted(() => {
                 <div class="form-group">
                     <label class="form-label">SO Number</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control">
+                        <input v-model="form.so_num" type="number" class="form-control">
                     </div>
                     <label class="form-label">Nama Customer</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control">
+                        <input v-model="form.customer" type="text" class="form-control">
                     </div>
                     <label class="form-label">Tanggal Pemesanan</label>
                     <div class="input-group mb-3">
-                        <input type="date" class="form-control">
+                        <input v-model="form.date" type="date" class="form-control">
                     </div>
                 </div>
                 <div @click="switchStyle" class="btn btn-primary btn">{{ isOpenStyle ? "CLOSE STYLE" : "ADD STYLE" }}

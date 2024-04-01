@@ -22,25 +22,15 @@ export const myModule = {
             //     ],
             // },
         ],
+        form:{
+            so:null,
+            customer:"",
+            date:""
+        }
     },
     mutations: {
-        // Mutation to update subQty of selectedMethod
-        updateSubQty(state, { styleIndex, methodIndex }) {
-            const method = state.style[styleIndex].selectedMethod[methodIndex];
-            const subQty = method.selectedColor.reduce(
-                (acc, color) => acc + color.qty,
-                0
-            );
-            state.style[styleIndex].selectedMethod[methodIndex].subQty = subQty;
-        },
-        // Mutation to update total based on subQty of selectedMethod
-        updateTotal(state, styleIndex) {
-            const styled = state.style[styleIndex];
-            const total = styled.selectedMethod.reduce(
-                (acc, method) => acc + method.subQty,
-                0
-            );
-            state.style[styleIndex].total = total;
+        setForm(state, { data }) {
+            state.form = data;
         },
         setStyle(state, { data }) {
             state.style = data;
@@ -84,6 +74,9 @@ export const myModule = {
             return state.style;
         }
         ,
+        getForm: (state) => {
+            return state.form;
+        },
         // Getter to compute subQty for a specific selectedMethod within a style
         getQty: (state) => (styleIndex, methodIndex,colorIndex) => {
             return state.style[styleIndex].selectedMethod[methodIndex].selectedColor[colorIndex].qty;

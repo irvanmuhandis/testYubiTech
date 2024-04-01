@@ -48,7 +48,7 @@ const selectedMethodsAllData = () => {
     } else {
         selectedMethods.value = [];
     }
- }
+}
 
 
 const switchColor = (item) => {
@@ -108,8 +108,8 @@ onMounted(() => {
         </div>
 
         <ColorName :key="item.id" v-for="(item, index) in selectedMethods" :isOpenColor="item.isOpenColor"
-            @close-color="closeColor(item)" :style-index="styleIndex" :method-index="index"
-            :selectedMethodItem="item" :selected-method="selectedMethods" :subQty="item.subQty" />
+            @close-color="closeColor(item)" :style-index="styleIndex" :method-index="index" :selectedMethodItem="item"
+            :selected-method="selectedMethods" :subQty="item.subQty" />
 
         <div class="border-top col-md p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-dark">Style {{ styleSales.style_name }}</strong>

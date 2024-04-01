@@ -24,7 +24,11 @@ const store = useStore();
 const colorList = ref([]);
 
 const fetchColor = () => {
-    axios.get('/api/name')
+    axios.get('/api/name', {
+            params: {
+                method_id: selectedMethodItem.id,
+            }
+        })
         .then(response => {
             const apiData = response.data;
             colorList.value = apiData;
@@ -91,7 +95,9 @@ onMounted(() => {
                     </td>
                     <td>{{ item.name }}</td>
                     <td v-if="selectedColor.includes(item)">
-                        <input v-model="item.qty" type="number">
+                        <div class="input-group">
+                            <input v-model="item.qty" type="number" class="form-control">
+                        </div>
                     </td>
                     <td v-else>Select First</td>
                 </tr>

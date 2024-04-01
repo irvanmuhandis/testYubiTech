@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ColorMethodSalesStyle extends Model
 {
     use HasFactory;
+    protected $guarded = [];
     function color_method()
     {
         return $this->belongsTo(ColorMethod::class);

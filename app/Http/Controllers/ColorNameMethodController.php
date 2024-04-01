@@ -9,7 +9,8 @@ class ColorNameMethodController extends Controller
 {
     function index()
     {
-        $data =  ColorNameMethod::all();
+        $req = request('method_id');
+        $data =  ColorNameMethod::where('color_method',$req)->get();
         $data->transform(function ($item) {
             $item['qty'] = 0;
             return $item;
