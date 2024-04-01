@@ -48,7 +48,7 @@ onMounted(() => {
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" width="5%" class="text-center">
+                        <th scope="col" width="5%">
                             NO
                         </th>
                         <th>Sales Order Number</th>
