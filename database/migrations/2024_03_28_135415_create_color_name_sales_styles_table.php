@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('colormethod_sales');
-            $table->foreign('colormethod_sales')->references('id')->on('color_method_sales');
+            $table->foreign('colormethod_sales')->references('id')->on('color_method_sales_styles');
             $table->integer('qty');
             $table->unsignedBigInteger('color_name');
-            $table->foreign('color_name')->references('id')->on('color_method_names');
+            $table->foreign('color_name')->references('id')->on('color_name_methods');
         });
     }
 
